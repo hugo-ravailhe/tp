@@ -1,11 +1,10 @@
-html {  background-color: #263238;
+html {
+    background-color: #9cb2c4;
 }
 
-
-#paragraphe
-{
+#paragraphe {
     color:#000000;
-    background-color:#90a4ae;
+    background-color:#ffffff;
     border:3px solid #000000;
     min-height:10em;
     height:10em;
@@ -13,7 +12,4 @@ html {  background-color: #263238;
 
 h1 {
     font-weight: bold;
-}
-#couleur_jaune{
-    color: yellow;
 }

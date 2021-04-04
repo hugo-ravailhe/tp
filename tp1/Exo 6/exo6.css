@@ -1,0 +1,32 @@
+html {
+    background-color: #9cb2c4;
+}
+
+#paragraphe {
+    color:#000000;
+    background-color:#ffffff;
+    border:3px solid #000000;
+    min-height:10em;
+    height:10em;
+}
+
+h1 {
+    font-weight: bold;
+    background-color: yellow;
+    font-family: "Comic Sans MS";
+    border: 3px blue solid;
+    border-radius: 10px;
+    margin: auto auto 300px;
+    text-align: center;
+    box-shadow: 6px 6px 6px black;
+    width: 200px;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+header {
+    display: flex;
+}
