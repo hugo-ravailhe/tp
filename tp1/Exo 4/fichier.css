@@ -1,0 +1,25 @@
+.collapse{
+    border-collapse: collapse;
+}
+
+table {
+    margin: auto;
+    border: 6px solid red;
+}
+
+.centre {
+    text-align: center;
+}
+
+.gauche {
+    text-align: left;
+}
+
+.droite {
+    text-align: right;
+}
+
+table td, table th {
+    border: 2px solid black;
+    padding: 10px;
+}
