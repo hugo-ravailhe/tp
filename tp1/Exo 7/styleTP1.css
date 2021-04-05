@@ -1,0 +1,30 @@
+html {
+    background-color: #9cb2c4;
+}
+
+
+#paragraphe {
+    color:#000000;
+    background-color:#ffffff;
+    border:3px solid #000000;
+    min-height:10em;
+    height:10em;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+
+h2:hover{
+    background-color: blanchedalmond;
+}
+
+
+li{
+    padding-right : 10%;
+    display: none;
+}
+h2:hover + ol>li {
+    display: block;
+}

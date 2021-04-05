@@ -13,7 +13,7 @@ html {
 h1 {
     font-weight: bold;
     background-color: yellow;
-    font-family: "Comic Sans MS";
+    font-family: "Comic Sans MS", serif;
     border: 3px blue solid;
     border-radius: 10px;
     margin: auto auto 300px;
