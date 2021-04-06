@@ -28,3 +28,24 @@ li{
 h2:hover + ol>li {
     display: block;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+
+}
+
+.adresse {
+    transition: all 2s ease-out;
+}
+.adresse:hover, .address:focus {
+    background-color: aquamarine;
+}
+
+.contact {
+    transition: all 1s ease-out
+}
+
+.contact:hover, .contact:focus {
+    background-color: lightgreen;
+}
