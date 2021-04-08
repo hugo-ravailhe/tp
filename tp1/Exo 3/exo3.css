@@ -15,11 +15,6 @@ h1{
     text-shadow: 3px 3px 1px black;
 }
 
-p{
-    background-color: white;
-    width: 50%;
-    border: 10px solid greenyellow;
-}
 
 .italique{
     font-style: italic;
