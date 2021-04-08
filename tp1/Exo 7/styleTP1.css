@@ -26,5 +26,5 @@ li{
     display: none;
 }
 h2:hover + ol>li {
-    display: block;
+    display: inline;
 }
