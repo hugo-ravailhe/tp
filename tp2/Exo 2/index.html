@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulaires</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="exo2.css">
+  <title>Formulaires</title>
 </head>
 <body>
   <header>
-    <h1>Coordonnées</h1>
-    <form>
-      <label for="nom" style="font-weight: bold">Nom</label><br>
-      <input type="text" id="nom" name="name" placeholder="Paradiso" size="20" required>
-    </form><br>
+    <div class="formulaire">
+      <h1>Coordonnées</h1>
+      <form>
+        <label for="nom" style="font-weight: bold">Nom</label><br>
+        <input type="text" id="nom" name="name" placeholder="Paradiso" size="20" required>
+      </form><br>
 
-    <form>
-      <label for="prenom" style="font-weight: bold">Prenom</label><br>
-      <input type="text" id="prenom" name="prenom" placeholder="Alexis" size="20" required>
-    </form><br>
+      <form>
+        <label for="prenom" style="font-weight: bold">Prenom</label><br>
+        <input type="text" id="prenom" name="prenom" placeholder="Alexis" size="20" required>
+      </form><br>
 
-    <form>
-      <label for="adresse" style="font-weight: bold">Adresse :</label><br>
-      <input type="text" id="adresse" name="adresse" placeholder="37 allée des Martyrs Hongrois" required size ="20">
-    </form><br>
+      <form>
+        <label for="adresse" style="font-weight: bold">Adresse :</label><br>
+        <input type="text" id="adresse" name="adresse" placeholder="37 allée des Martyrs Hongrois" required size ="20">
+      </form><br>
 
-    <label for="pays" style="font-weight: bold">Pays : </label>
-    <select id="pays" name="Pays">
-      <option value="allemagne">Allemagne</option>
-      <option value="france">France</option>
-      <option value="suisse">Suisse</option>
-    </select><br><br>
+      <label for="pays" style="font-weight: bold">Pays : </label>
+      <select id="pays" name="Pays">
+        <option value="allemagne">Allemagne</option>
+        <option value="france">France</option>
+        <option value="suisse">Suisse</option>
+      </select><br><br>
 
-    <form>
-      <label for="doc" style="font-weight: bold">Je souhaite recevoir la documentation</label>
-      <input id="doc" type="checkbox" name="doc">
-    </form><br>
+      <form>
+        <label for="doc" style="font-weight: bold">Je souhaite recevoir la documentation</label>
+        <input id="doc" type="checkbox" name="doc">
+      </form><br>
 
-    <form>
-      <label style="font-weight: bold">Sexe:</label>
-      <input type="radio" id="masculin" name="sexe" value="masculin">
-      <label for="masculin">Masculin</label>
-      <input type="radio" id="feminin" name="sexe" value="feminin">
-      <label for="feminin">Féminin</label>
-    </form><br>
+      <form>
+        <label style="font-weight: bold">Sexe:</label>
+        <input type="radio" id="masculin" name="sexe" value="masculin">
+        <label for="masculin">Masculin</label>
+        <input type="radio" id="feminin" name="sexe" value="feminin">
+        <label for="feminin">Féminin</label>
+      </form><br>
+    </div>
 
     <div class="formulaire">
       <form>
