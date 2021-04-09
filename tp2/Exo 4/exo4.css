@@ -1,16 +1,7 @@
+* { box-sizing: border-box;}
+
 html {
     background-color: lightgrey;
-}
-
-.formulaire {
-    background-color: grey;
-    padding: 10px;
-    margin: 10px;
-    border: 2px solid black;
-}
-
-.centre{
-
 }
 
 header {
@@ -24,6 +15,29 @@ header > img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
     border-radius:50%;
     filter: drop-shadow(5px 5px 5px #2db400);
 }
+
+form {
+    background-color: white;
+    margin: auto;
+    width:100%;
+    max-width: 1000px;
+    border:  1px  solid  black;
+    padding: 30px;
+    filter: drop-shadow(5px 5px 5px #000000);
+
+}
+
+#flex > div > input {
+    margin-right: 10px;
+}
+
+#flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
