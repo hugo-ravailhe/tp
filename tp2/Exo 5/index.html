@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma super page web</title>
+    <link rel="stylesheet" href="exo5.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img.png">
+</head>
+<body>
+<header>
+    <img src="img.png" alt="">
+    <form>
+        <div id="flex">
+            <div>
+                <input type="text" id="prenom" name="fistname" placeholder="Entrez votre prénom" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <input type="text" id="nom" name="name" placeholder="Entrez votre nom" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <input type="email" id="email" name="user_email" placeholder="Entrez votre email" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <select id="role" name="Role">
+                    <option value="enseignat">Enseignant</option>
+                    <option value="etudiant">Etudiant</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="button">Ajouter</button>
+            <button type="reset" class="button">Supprimer</button>
+        </div>
+    </form>
+</header>
+</body>
+</html>
