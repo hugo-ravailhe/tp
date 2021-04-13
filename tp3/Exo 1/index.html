@@ -10,7 +10,7 @@
 <body>
 <header>
     <img src="img.png" alt="">
-    <form id="forme">
+    <form id="forme" onsubmit="ajout(event)">
         <div id="flex">
             <div>
                 <label for="prenom"></label>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="button" onclick="ajout()">Ajouter</button>
+            <button type="submit" class="button" >Ajouter</button>
             <button type="reset" class="button" onclick="suppr()">Supprimer</button>
         </div>
     </form>
@@ -57,10 +57,12 @@
     let tab = document.getElementById("collapse");
     let indexTab = 0;
 
-    function ajout(){
+    function ajout(event){
+        event.preventDefault();
         if(document.getElementById("prenom").value !== ""){
             if(document.getElementById("nom").value !== ""){
-                if(document.getElementById("email").value !== ""){
+                const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if(document.getElementById("email").value.match(mailformat)){
                     let elem = document.createElement("tr");
                     let prenom = document.createElement("td");
                     let nom = document.createElement("td");
