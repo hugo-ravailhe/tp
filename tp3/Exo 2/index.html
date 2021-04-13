@@ -53,10 +53,45 @@
 <script>
     console.log("It's Alive!!!");
 
+
+    let tab = document.getElementById("collapse");
+    let indexTab = 0;
+
     function ajout(event){
-        alert();
+        event.preventDefault();
+        if(document.getElementById("prenom").value !== ""){
+            if(document.getElementById("nom").value !== ""){
+                const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if(document.getElementById("email").value.match(mailformat)){
+                    let elem = document.createElement("tr");
+                    let prenom = document.createElement("td");
+                    let nom = document.createElement("td");
+                    let email = document.createElement("td");
+                    let role = document.createElement("td");
+
+                    prenom.textContent = document.getElementById("prenom").value;
+                    console.log(prenom);
+                    nom.textContent = document.getElementById("nom").value;
+                    email.textContent = document.getElementById("email").value;
+                    role.textContent = document.getElementById("role").value;
+
+                    elem.appendChild(prenom);
+                    elem.appendChild(nom);
+                    elem.appendChild(email);
+                    elem.appendChild(role);
+                    tab.appendChild(elem);
+                    indexTab++;
+                }
+            }
+        }
     }
 
+    function suppr(){
+        while(indexTab !== 0){
+            document.getElementById('collapse').deleteRow(indexTab);
+            indexTab--;
+        }
+    }
 
 </script>
 </body>
