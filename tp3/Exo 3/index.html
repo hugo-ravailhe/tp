@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma super page web</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img.png">
+</head>
+<body>
+<header>
+    <img src="img.png" alt="">
+    <form id="forme" onsubmit="ajout(event)">
+        <div id="flex">
+            <div>
+                <label for="prenom"></label>
+                <input type="text" id="prenom" name="fistname" placeholder="Entrez votre prénom" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <label for="nom"></label>
+                <input type="text" id="nom" name="name" placeholder="Entrez votre nom" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <label for="email"></label>
+                <input type="email" id="email" name="user_email" placeholder="Entrez votre email" size="20" style="text-transform:uppercase" required>
+            </div>
+            <div>
+                <label for="role"></label>
+                <select id="role" name="Role">
+                    <option value="Enseignant">Enseignant</option>
+                    <option value="Etudiant">Etudiant</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="button" >Ajouter</button>
+            <button type="reset" class="button" onclick="suppr()">Supprimer</button>
+        </div>
+    </form>
+</header>
+
+<main>
+    <table id="collapse">
+        <tr>
+            <td>Prénom</td>
+            <td>Nom</td>
+            <td>Email</td>
+            <td>Rôle</td>
+        </tr>
+    </table>
+</main>
+
+<script>
+    console.log("It's Alive!!!");
+
+
+    let tab = document.getElementById("collapse");
+    let indexTab = 0;
+
+    function ajout(event){
+        event.preventDefault();
+        let elem = document.createElement("tr");
+        let prenom = document.createElement("td");
+        let nom = document.createElement("td");
+        let email = document.createElement("td");
+        let role = document.createElement("td");
+
+
+
+        prenom.textContent = document.getElementById("prenom").value;
+        console.log(prenom);
+        nom.textContent = document.getElementById("nom").value;
+        email.textContent = document.getElementById("email").value;
+        role.textContent = document.getElementById("role").value;
+        elem.appendChild(prenom);
+        elem.appendChild(nom);
+        elem.appendChild(email);
+        elem.appendChild(role);
+        tab.appendChild(elem);
+
+
+        var liste = document.querySelectorAll("td")
+
+        liste.forEach(elem => {
+            elem.style.padding ="20px";
+            elem.style.borderBottom ="none";
+        });
+
+        indexTab++;
+
+    }
+
+    function suppr(){
+        while(indexTab !== 0){
+            document.getElementById('collapse').deleteRow(indexTab);
+            indexTab--;
+        }
+    }
+
+</script>
+</body>
+</html>
