@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Ma super page web</title>
-    <link rel="stylesheet" href="exo5.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="16x16" href="img.png">
 </head>
 <body>
 <header>
     <img src="img.png" alt="">
-    <form>
+    <form id="forme" onsubmit="return ajout();">
         <div id="flex">
             <div>
                 <label for="prenom"></label>
@@ -38,5 +38,34 @@
         </div>
     </form>
 </header>
+
+<main>
+    <table class="collapse">
+        <tr>
+            <td>Prénom</td>
+            <td>Nom</td>
+            <td>Email</td>
+            <td>Rôle</td>
+        </tr>
+    </table>
+</main>
+
+<script>
+    console.log("It's Alive!!!");
+    var info;
+
+    let tab = document.createElement("tr");
+    function ajout(){
+        alert("hello");
+
+
+        let prenom = document.createElement("td");
+        prenom.textContent = document.getElementById("prenom").value;
+        let nom = document.createElement("td");
+        nom.textContent = document.getElementById("nom").value;
+        let email = document.createElement("td")
+        email.textContent = document.getElementById("email").value;
+    }
+</script>
 </body>
 </html>
