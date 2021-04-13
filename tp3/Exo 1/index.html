@@ -10,7 +10,7 @@
 <body>
 <header>
     <img src="img.png" alt="">
-    <form id="forme" onsubmit="return ajout();">
+    <form id="forme">
         <div id="flex">
             <div>
                 <label for="prenom"></label>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div>
-            <button type="submit" class="button">Ajouter</button>
+            <button type="submit" class="button" onclick="ajout()">Ajouter</button>
             <button type="reset" class="button" onclick="suppr()">Supprimer</button>
         </div>
     </form>
@@ -61,6 +61,7 @@
     let nom = document.createElement("td");
     let email = document.createElement("td");
     let role = document.createElement("td");
+
     function ajout(){
         alert("hello");
         prenom.textContent = document.getElementById("prenom").value;
