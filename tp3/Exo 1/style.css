@@ -67,10 +67,12 @@ input:invalid
 table {
     width: 100%;
     margin: auto;
+    text-align: center;
 }
 
 table td, table th {
     border: 1px solid black;
+    padding: 5px;
 }
 
 #collapse{
