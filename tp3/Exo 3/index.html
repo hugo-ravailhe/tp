@@ -10,33 +10,35 @@
 <body>
 <header>
     <img src="img.png" alt="">
-    <form id="forme" onsubmit="ajout(event)">
-        <div id="flex">
-            <div>
-                <label for="prenom"></label>
-                <input type="text" id="prenom" name="fistname" placeholder="Entrez votre prénom" size="20" style="text-transform:uppercase" required>
+    <div id="formuMove">
+        <form id="forme" onsubmit="ajout(event)">
+            <div id="flex">
+                <div>
+                    <label for="prenom"></label>
+                    <input type="text" id="prenom" name="fistname" placeholder="Entrez votre prénom" size="20" style="text-transform:uppercase" required>
+                </div>
+                <div>
+                    <label for="nom"></label>
+                    <input type="text" id="nom" name="name" placeholder="Entrez votre nom" size="20" style="text-transform:uppercase" required>
+                </div>
+                <div>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="user_email" placeholder="Entrez votre email" size="20" style="text-transform:uppercase" required>
+                </div>
+                <div>
+                    <label for="role"></label>
+                    <select id="role" name="Role">
+                        <option value="Enseignant">Enseignant</option>
+                        <option value="Etudiant">Etudiant</option>
+                    </select>
+                </div>
             </div>
             <div>
-                <label for="nom"></label>
-                <input type="text" id="nom" name="name" placeholder="Entrez votre nom" size="20" style="text-transform:uppercase" required>
+                <button type="submit" class="button" >Ajouter</button>
+                <button type="reset" class="button" onclick="suppr()">Supprimer</button>
             </div>
-            <div>
-                <label for="email"></label>
-                <input type="email" id="email" name="user_email" placeholder="Entrez votre email" size="20" style="text-transform:uppercase" required>
-            </div>
-            <div>
-                <label for="role"></label>
-                <select id="role" name="Role">
-                    <option value="Enseignant">Enseignant</option>
-                    <option value="Etudiant">Etudiant</option>
-                </select>
-            </div>
-        </div>
-        <div>
-            <button type="submit" class="button" >Ajouter</button>
-            <button type="reset" class="button" onclick="suppr()">Supprimer</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </header>
 
 <main>
