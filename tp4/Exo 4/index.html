@@ -100,6 +100,11 @@
         nav, h2{
             text-align: center;
         }
+        span{
+            border: 1px solid black;
+            padding: 3px;
+            margin: 2px;
+        }
 
     </style>
 </head>
@@ -162,29 +167,93 @@
             </tbody>
         </table>
     </div>
+    <nav id="navigation">
+    </nav>
 </main>
 
 
 <script charset="utf-8">
 
     var newUserForm = document.forms.newUser;
+    var position = 1;
     let start = Date.now();
-    getTasks()
+    getTasks(true,0)
 
-    function getTasks(){
+    function getTasks(selection,nbr){
         fetch('https://jsonplaceholder.typicode.com/todos')
             .then(response => response.json())
             .then(function (data){
                 //affiche toutes les données du json
-                console.log(data)
-                for (let i = 0; i < data.length; i++) {
-                    createTask(data[i]["userId"],data[i]["id"],data[i]["title"],data[i]["completed"])
+                if (selection){
+                    console.log(data)
+                    //parcours le json pour insérer dans le tableau
+                    let nbr_page = data.length/10
+                    if (!Number.isInteger(nbr_page)){
+                        nbr_page++
+                    }
+                    const navigation = document.querySelector('#navigation')
+                    if(nbr_page > 1){
+
+                        const prev = document.createElement("span")
+                        prev.textContent = '<';
+                        prev.onclick = function(){
+                            if (position > 1){
+                                position--
+                                parcourir(position)
+                            }
+                        }
+                        navigation.appendChild(prev)
+
+                        for (let i = 1; i <= nbr_page; i++) {
+                            const page = document.createElement("span")
+                            page.textContent = i.toString()
+                            page.onclick = function () {
+                                parcourir(i)
+                            }
+                            navigation.appendChild(page)
+                        }
+
+
+                        const next = document.createElement("span")
+                        next.textContent = '>';
+                        next.onclick = function(){
+                            if (position < nbr_page){
+                                position++
+                                parcourir(position)
+                            }
+                        }
+                        navigation.appendChild(next)
+
+
+
+                    }
+                    if(data.length<10){
+                        for (let i = 0; i < data.length; i++) {
+                            createTask(data[i]["userId"],data[i]["id"],data[i]["title"],data[i]["completed"])
+                        }
+                    }else{
+                        for (let i = 0; i < 10; i++) {
+                            createTask(data[i]["userId"],data[i]["id"],data[i]["title"],data[i]["completed"])
+                        }
+                    }
+                } else {
+                    for (let i = (nbr-1)*10; i < (nbr-1)*10+10; i++) {
+                        createTask(data[i]["userId"],data[i]["id"],data[i]["title"],data[i]["completed"])
+                    }
                 }
 
             });
     }
 
+    function parcourir(nbr){
+        const data = document.querySelector("#tab-task tbody")
+        while (data.firstChild) {
+            data.removeChild(data.firstChild)
+        }
+        position = nbr
+        getTasks(false,nbr)
 
+    }
     function createTask(userid, id, title, completed){
         const newItem = document.createElement('tr')
         const userId = document.createElement('td')
@@ -204,6 +273,7 @@
 
     document.querySelector("#tab-user").style.display = "none"
     document.querySelector("#tab-task").style.display = "none"
+    document.querySelector("#navigation").style.display = "none"
     document.querySelector("form").style.display = "none"
 
     function interval(){
@@ -245,6 +315,8 @@
     function showUser(){
         let tab_user = document.querySelector("#tab-task")
         tab_user.style.display = "none"
+        let navigation = document.querySelector("#navigation")
+        navigation.style.display = "none"
         let tab_task = document.querySelector("#tab-user")
         tab_task.style.display = "block"
         let formulaire = document.querySelector("form")
@@ -257,6 +329,8 @@
         tab_task.style.display = "none"
         let formulaire = document.querySelector("form")
         formulaire.style.display = "none"
+        let navigation = document.querySelector("#navigation")
+        navigation.style.display = "block"
 
     }
 
