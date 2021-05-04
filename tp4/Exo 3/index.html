@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" sizes="16x16" href="img.png">
+    <title>Point de départ pour TP4</title>
+
+    <style type="text/css" media="screen">
+
+        * {
+            box-sizing: border-box;
+            font-family: Verdana;
+        }
+        body {
+            background-color: #fafafa;
+        }
+
+        main, header {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        #new-user {
+            position: sticky;
+            top: 0;
+        }
+
+        .box {
+            background-color: #fff;
+            margin: 2em;
+            padding: 16px;
+            box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+        }
+
+        input[type="text"], input[type="email"], select {
+            flex-grow: 1;
+            margin: 4px;
+            border: none;
+            border-bottom: 1px solid #cacaca;
+            padding: 5px;
+        }
+
+        input[type="text"]:invalid, input[type="email"]:invalid {
+            border: none;
+            box-shadow: none;
+            border-bottom: 1px solid #ff5252;
+            caret-color: #ff5252;
+            padding: 5px;
+        }
+
+        main .box {
+            overflow-x: scroll;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 16px;
+            flex-wrap: wrap;
+        }
+
+        .container.left {
+            justify-content: flex-start;
+        }
+
+        .btn {
+            background-color: #f5f5f5;
+            box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+            text-transform: uppercase;
+            padding: 6px;
+            border: none;
+            margin: 0px 10px;
+        }
+
+        .datatable {
+            width: 100%;
+            box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12) !important;
+        }
+
+
+
+        .datatable td, .datatable th {
+            text-align: center;
+            padding: 24px;
+        }
+
+
+        .datatable tr:not(:last-child) td, .datatable th {
+            border-bottom: 1px solid #ccc;
+
+        }
+        img{
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+            border-radius:50%;
+            filter: drop-shadow(5px 5px 5px #2db400);
+        }
+
+        nav, h2{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<nav>
+    <img src="img.png" alt="logo">
+    <button type="button" class="btn" onclick="showUser()">Utilisateurs</button>
+    <button type="button" class="btn" onclick="showTasks()">Tâches</button>
+</nav>
+
+<header>
+    <form name="newUser" action="" class="box" id="new-user" onsubmit="addElem(event)">
+        <div class="container">
+            <input type="text" name="firstname" placeholder="Prénom" required="">
+            <input type="text" name="lastname" placeholder="Nom" required="">
+            <input type="email" name="email" placeholder="E-Mail" required="">
+            <select name="role" required="">
+                <option value="Enseignant">Enseignant</option>
+                <option value="Étudiant">Étudiant</option>
+            </select>
+        </div>
+        <div class="container left">
+            <button id="submit" type="submit" class="btn">Ajouter</button>
+            <button type="button" class="btn" onclick="removeAll()">Tout supprimer</button>
+        </div>
+    </form>
+</header>
+
+
+<main>
+    <div class="box" id="tab-user">
+        <h2>Utilisateur</h2>
+        <table class="datatable">
+            <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Rôle</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="box" id="tab-task">
+        <h2>Tâche</h2>
+        <table class="datatable" id="task">
+            <thead>
+            <tr>
+                <th>USER ID</th>
+                <th>ID</th>
+                <th>TITRE</th>
+                <th>TERMINE</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+
+<script charset="utf-8">
+
+    var newUserForm = document.forms.newUser;
+
+    let start = Date.now();
+    getTasks()
+
+    function getTasks(){
+        fetch('https://jsonplaceholder.typicode.com/todos')
+            .then(response => response.json())
+            .then(function (data){
+                //affiche toutes les données du json
+                console.log(data)
+                //parcours le json pour insérer dans le tableau
+                for (let i = 0; i < data.length; i++) {
+                    createTask(data[i]["userId"],data[i]["id"],data[i]["title"],data[i]["completed"])
+                }
+            });
+    }
+
+
+    function createTask(userid, id, title, completed){
+        const newItem = document.createElement('tr')
+        const userId = document.createElement('td')
+        const iD = document.createElement('td')
+        const Title = document.createElement('td')
+        const Completed = document.createElement('td')
+        const table = document.querySelector('#task tbody')
+        userId.textContent = userid
+        iD.textContent = id
+        Title.textContent = title
+        Completed.textContent = completed
+        newItem.append(userId, iD, Title, Completed)
+        table.appendChild(newItem)
+    }
+
+    var intervalID = window.setInterval(interval, 1000);
+
+    document.querySelector("#tab-user").style.display = "none"
+    document.querySelector("#tab-task").style.display = "none"
+
+    function interval(){
+        if (Date.now() - start < 10000)
+        document.getElementById("submit").innerHTML = "("+ (10 - (Math.round((Date.now() - start)/1000))) +")"
+        else{
+            document.getElementById("submit").innerHTML = "Ajouter"
+        }
+    }
+
+    function addElem (event) {
+        event.preventDefault();
+        if (Date.now() - start > 10000){
+            event.preventDefault();
+            console.log(newUserForm.elements.firstname.value)
+            const newItem = document.createElement('tr')
+            const firstnameTd = document.createElement('td')
+            const lastnameTd = document.createElement('td')
+            const emailTd = document.createElement('td')
+            const roleTd = document.createElement('td')
+            firstnameTd.textContent = document.newUser.firstname.value
+            lastnameTd.textContent = document.newUser.lastname.value
+            emailTd.textContent = document.newUser.email.value
+            roleTd.textContent = document.newUser.role.value
+
+
+            newItem.append(firstnameTd, lastnameTd, emailTd, roleTd)
+            /* le premier élément dans le document qui contient la classe "datatable" est retourné*/
+            const table = document.querySelector('.datatable tbody')
+
+            table.appendChild(newItem)
+            start = Date.now()
+        }else{
+            alert("Attendez la fin du compte à rebours !")
+        }
+
+    }
+
+    function showUser(){
+        let tab_user = document.querySelector("#tab-task")
+        tab_user.style.display = "none"
+        let tab_task = document.querySelector("#tab-user")
+        tab_task.style.display = "block"
+        let formulaire = document.querySelector("form")
+        formulaire.style.display = "block"
+    }
+    function showTasks(){
+        let tab_user = document.querySelector("#tab-task")
+        tab_user.style.display = "block"
+        let tab_task = document.querySelector("#tab-user")
+        tab_task.style.display = "none"
+        let formulaire = document.querySelector("form")
+        formulaire.style.display = "none"
+
+    }
+
+
+    function removeAll () {
+        const tbody = document.querySelector('.datatable tbody')
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild)
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>
