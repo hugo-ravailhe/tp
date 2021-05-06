@@ -207,10 +207,12 @@
     document.querySelector("form").style.display = "none"
 
     function interval(){
-        if (Date.now() - start < 10000)
-        document.getElementById("submit").innerHTML = "("+ (10 - (Math.round((Date.now() - start)/1000))) +")"
-        else{
+        if (Date.now() - start < 10000){
+            document.getElementById("submit").innerHTML = "ajouter ("+ (10 - (Math.round((Date.now() - start)/1000))) +")"
+            document.getElementById("submit").style.backgroundColor = 'gray'
+        } else{
             document.getElementById("submit").innerHTML = "Ajouter"
+            document.getElementById("submit").style.backgroundColor = '#f5f5f5'
         }
     }
 
